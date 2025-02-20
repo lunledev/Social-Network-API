@@ -3,7 +3,7 @@ import db from './config/connection.js';
 const app = express();  //creating a instance of express.
 const PORT = process.env.PORT || 3001; //initialize a port.
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); //parseing of URL-encoded request body and allowing parsing of complex data structues.
 
 
 app.use(express.json());//express function that parses incoming requests to json.
