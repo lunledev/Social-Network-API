@@ -1,6 +1,6 @@
 import express from 'express'; // import express package
 import db from './config/connection.js';
-import path from 'path'; //using a nodejs library.
+import path from 'path'; //using a Nodejs library.
 const app = express();  //creating a instance of express.
 const PORT = process.env.PORT || 3001; //initialize a port.
 
