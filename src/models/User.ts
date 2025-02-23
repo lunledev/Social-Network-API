@@ -11,8 +11,8 @@ email: string;
 //construct a new instance of the schema class
 const userSchema = new Schema<IUser>(
     {
-        username: {type: String, required: true },
-        email: {type: String, required: true}.
+        username: {type: String, unique: true, required: true, trim: true },
+        email: {type: String, required: true, unique: true, match: }.
 
     }
 );
