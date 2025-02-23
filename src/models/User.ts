@@ -12,7 +12,7 @@ email: string;
 const userSchema = new Schema<IUser>(
     {
         username: {type: String, required: true },
-        email: {}.
+        email: {type: String, required: true}.
 
     }
 );
