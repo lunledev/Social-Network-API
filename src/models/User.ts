@@ -1,12 +1,15 @@
 //import schema and model from mongoose
 import { match } from "assert";
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document,ObjectId } from "mongoose";
 
 
 //inteface
 interface IUser extends Document{
 username: string;
 email: string;
+thoughts: ObjectId[];
+friends: ObjectId[];
+
 
 }
 //construct a new instance of the schema class
@@ -26,7 +29,14 @@ const userSchema = new Schema<IUser>(
             }, 
             required: [true, 'email required']
 
-        }
+        },
+        thoughts:[
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Thought',  //reference to Thought Model
+
+            },
+        ],
 
     }
 );
