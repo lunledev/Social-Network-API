@@ -1,7 +1,4 @@
-//import schema and model from mongoose
-import { match } from "assert";
 import { Schema, model, Document,ObjectId } from "mongoose";
-
 
 //inteface
 interface IUser extends Document{
@@ -37,7 +34,14 @@ const userSchema = new Schema<IUser>(
 
             },
         ],
+        friends: [{
+             type: Schema.Types.ObjectId,
+             ref: 'User', //reference to User Model
 
+
+        },
+    ],
+    
     }
 );
 
