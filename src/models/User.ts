@@ -42,13 +42,29 @@ const userSchema = new Schema<IUser>(
         },
     ],
     
+    },
+    {
+        //include virtual in response.
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
     }
 );
 
-// using model() to compile a  model based on schema userSchema
+// Create a virtual property `friendCount` that retrieves length of user's friends on query.
+userSchema.virtual('fiendCount')
+.get(function(this: any){
+    return `${this.friends.length}`;
+})
+
+// intitialize our User model
+const User = model('user',userSchema);
 
 
-//export Users
+
+//export User
+export default User;
 
 
 
