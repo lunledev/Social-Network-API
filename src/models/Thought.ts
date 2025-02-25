@@ -16,6 +16,12 @@ const thoughtSchema = new Schema<IThought>(
         minlength: minlen,
         maxLength: maxlen,
         required: [true, `must be between ${minlen} and ${maxlen} characters`]},
+        createdAt: {type: Date, default: Date.now
+
+
+            
+        },
+
        
 
 });
