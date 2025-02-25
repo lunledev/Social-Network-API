@@ -5,17 +5,21 @@ interface IThought extends Document{
 thoughtText:string;
 
 }
-
+const minlen = 1;
+const maxLen =280;
 //Schema to create Thought model
-const thoughtSchma = new Schema<IThought>(
+const thoughtSchema = new Schema<IThought>(
 {
-    thoughtText: {type: String, required: true},
+    thoughtText: {type: String, 
+        minlength: minlen,
+        maxLength: maxLen,
+        required: [true, `must be between ${minlen} and ${maxLen} characters`]},
 
 });
 
 
 //intialize Thought model
-const Thought = model('thought', thoughtSchma);
+const Thought = model('thought', thoughtSchema);
 
 //export Thought
 export default Thought;
