@@ -20,7 +20,7 @@ const thoughtSchema = new Schema<IThought>(
             required: [true, `must be between ${minlen} and ${maxlen} characters`]
         },
         createdAt: {
-            type: Date, default: Date.now(),
+            type: Date, default: Date.now,
             get: getDate
         }
 
