@@ -3,8 +3,8 @@ import { Schema, model, Document, ObjectId } from "mongoose";
 //interface
 interface IThought extends Document {
     thoughtText: string;
-    createdAt: Date;
-    getDate: Date;
+    createdAt: Date| string;
+    getDate: string;
 
 }
 
@@ -44,10 +44,8 @@ const thoughtSchema = new Schema<IThought>(
 
 
 );
-function getDate(createdAt: any) {
-    const newDate = createdAt.toLocaleTimeString();
-
-    return newDate;
+function getDate(createdAt: Date): string {
+    return createdAt.toLocaleTimeString()+ " " + createdAt.toLocaleDateString();
 
 }
 
