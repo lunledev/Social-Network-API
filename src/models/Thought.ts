@@ -5,6 +5,7 @@ interface IThought extends Document {
     thoughtText: string;
     createdAt: Date;
     createdAtFormatted: string;
+    username: string;
 
 }
 
@@ -21,7 +22,13 @@ const thoughtSchema = new Schema<IThought>(
         },
         createdAt: {
             type: Date, default: Date.now,
-        }
+        },
+        username: {
+            type: String,
+            required: true,
+            ref: 'User'
+        },
+
 
     },
     {
