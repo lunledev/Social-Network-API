@@ -3,8 +3,8 @@ import { Schema, model, Document, ObjectId } from "mongoose";
 //interface
 interface IThought extends Document {
     thoughtText: string;
-    createdAt: Date| string;
-    getDate: string;
+    createdAt: Date;
+    createdAtFormatted: string;
 
 }
 
@@ -21,34 +21,32 @@ const thoughtSchema = new Schema<IThought>(
         },
         createdAt: {
             type: Date, default: Date.now,
-            get: getDate
         }
-
-
-        //toLocaleDateString();
-        //toLocaleTimeString();
-
-        
-
-
-
 
     },
     {
         toJSON:
        {
-            getters: true
+            virtuals: true
        },
-        timestamps: true
+        id: false,
     },
 
 
 );
-function getDate(createdAt: Date): string {
+
+
+/*thoughtSchema.virtual('createAtFormatted')
+.get(function (createdAt: Date): string {
     return createdAt.toLocaleTimeString()+ " " + createdAt.toLocaleDateString();
+});*/
 
-}
-
+//virtual property
+//getters
+thoughtSchema.virtual('createdAtFormatted')
+.get(function (this: any){
+    return this.createdAt.toLocaleTimeString()+ " " + this.createdAt.toLocaleDateString();
+});
 
 
 //intialize Thought model
