@@ -7,6 +7,7 @@ interface IThought extends Document {
     createdAtFormatted: string;
     username: string;
     reactions: reactionSchema[];
+    reactionCount: number;
 
 }
 
@@ -57,7 +58,10 @@ thoughtSchema.virtual('createdAtFormatted')
     return this.createdAt.toLocaleTimeString()+ " " + this.createdAt.toLocaleDateString();
 });
 
-
+thoughtSchema.virtual('reactionCount')
+.get(function (this: any){
+    return this.reactions.length;
+});
 //intialize Thought model
 const Thought = model('thought', thoughtSchema);
 
