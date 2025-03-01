@@ -31,9 +31,16 @@ const reactionSchema = new Schema<IReaction>(
         type: Date,
         default: Date.now,
     }
-    
-    
-});
+},
+
+{
+    toJSON: {
+        getters: true,
+
+    },
+    id: false,
+}
+);
 
 
 export default reactionSchema;
