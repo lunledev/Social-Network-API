@@ -6,6 +6,7 @@ interface IReaction extends Document{
     reactionBody: string;
     username: string;
     createdAt: Date;
+    createdAtFormattedReaction: string;
 
 
 }
@@ -30,12 +31,13 @@ const reactionSchema = new Schema<IReaction>(
     createdAt: {
         type: Date,
         default: Date.now,
+        ref: 'Thought',
     }
 },
 
 {
     toJSON: {
-        getters: true,
+        virtuals: true,
 
     },
     id: false,
@@ -43,5 +45,14 @@ const reactionSchema = new Schema<IReaction>(
 );
 
 
-export default reactionSchema;
+//virtual property
+//getters
+reactionSchema.virtual('createdAtFormattedReaction')
+.get(function (this: any){
+    return this.createdAt.toLocaleTimeString()+ " " + this.createdAt.toLocaleDateString();
+});
+
+
+
+export {reactionSchema,IReaction};
 

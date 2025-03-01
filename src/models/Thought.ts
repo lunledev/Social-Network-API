@@ -1,4 +1,5 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model } from "mongoose";
+import {reactionSchema, IReaction} from "./Reaction.js";
 
 //interface
 interface IThought extends Document {
@@ -6,7 +7,7 @@ interface IThought extends Document {
     createdAt: Date;
     createdAtFormatted: string;
     username: string;
-    reactions: reactionSchema[];
+    reactions: IReaction[];
     reactionCount: number;
 
 }
