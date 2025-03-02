@@ -6,6 +6,7 @@ username: string;
 email: string;
 thoughts: ObjectId[];
 friends: ObjectId[];
+friendCount: number;
 
 
 }
@@ -53,7 +54,7 @@ const userSchema = new Schema<IUser>(
 );
 
 // Create a virtual property `friendCount` that retrieves length of user's friends on query.
-userSchema.virtual('fiendCount')
+userSchema.virtual('friendCount')
 .get(function(this: any){
     return `${this.friends.length}`;
 })
