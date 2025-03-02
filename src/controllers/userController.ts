@@ -5,7 +5,7 @@ import { Request, Response } from "express";
 
 
 //Get all Users.
-export const getUsers = async (_req: Request, res: Response) =>{
+export const getAllUsers = async (_req: Request, res: Response) =>{
 {
     try{
         const users = await User.find();
