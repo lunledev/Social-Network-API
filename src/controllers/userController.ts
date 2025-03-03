@@ -8,7 +8,7 @@ import { Request, Response } from "express";
 export const getAllUsers = async (_req: Request, res: Response) =>{
 {
     try{
-        const users = await User.find();
+        const users = await User.find({});
         res.json(users);
     }
     catch(err){
