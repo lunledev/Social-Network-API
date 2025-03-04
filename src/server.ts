@@ -1,9 +1,11 @@
-import express from 'express'; // import express package
+import express,{NextFunction, Request, Response} from 'express'; // import express package
+//import express from 'express'; // import express package
 import db from './config/connection.js';
 import routes from './routes/index.js';
 import path from 'path'; //using a Nodejs library.
 const app = express();  //creating a instance of express.
 const PORT = process.env.PORT || 3001; //initialize a port.
+
 
 //const project = path.basename(process.cwd()).match(/Social-Network-API/);
 //const project = path.basename(process.cwd()).match(/\S+/);
@@ -14,6 +16,24 @@ app.use(express.urlencoded({ extended: true })); //parseing of URL-encoded reque
 
 app.use(express.json());//express function that parses incoming requests to json.
 app.use(routes);
+
+
+
+app.use((_req: Request, res: Response, next: NextFunction) => { 
+    
+    res.status(404).send('hit a snag!');
+    next();
+    
+});
+
+app.use((_req: Request, res: Response, next: NextFunction) => { 
+  next();
+  res.status(500).send('Something went wrong!');
+
+  
+});
+
+
 
 db.once('open',() =>{   //excutes only once the open connection to mongodb is successful.
 
