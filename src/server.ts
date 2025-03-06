@@ -19,21 +19,18 @@ app.use(routes);
 
 
 
-app.use((_req: Request, res: Response, next: NextFunction) => { 
+//app.use((_req: Request, res: Response, next: NextFunction) => { 
     
-    res.status(404).send('hit a snag!');
-    next();
+  //  res.status(404).send('hit a snag!');
+  //  next();
     
+//});
+
+app.get('*',(_req: Request, res: Response) => { 
+
+  res.status(404).send('hit a snag!');
+
 });
-
-app.use((_req: Request, res: Response, next: NextFunction) => { 
-  next();
-  res.status(500).send('Something went wrong!');
-
-  
-});
-
-
 
 db.once('open',() =>{   //excutes only once the open connection to mongodb is successful.
 
