@@ -1,4 +1,4 @@
-import express,{NextFunction, Request, Response} from 'express'; // import express package
+import express,{ Request, Response} from 'express'; // import express package
 //import express from 'express'; // import express package
 import db from './config/connection.js';
 import routes from './routes/index.js';
@@ -26,7 +26,13 @@ app.use(routes);
     
 //});
 
-app.get('*',(_req: Request, res: Response) => { 
+//app.get('*',(_req: Request, res: Response) => { 
+
+//  res.status(404).send('hit a snag!');
+
+//});
+
+app.use('/*',(_req: Request, res: Response) => { 
 
   res.status(404).send('hit a snag!');
 
