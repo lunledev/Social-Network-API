@@ -21,6 +21,14 @@ export const getAllUsers = async (_req: Request, res: Response) =>{
 //get single user by its _id and populated thought and friend data
 export const getSingleUser = async (req: Request, res: Response) => {
     try{
+        const user = await User.findOne({_id: req.params.userId})
+        .select('-__v')
+        .populate('thoughts')
+        .populate('friends');
+
+        if(){
+            
+        }
 
     }
     catch(err)
