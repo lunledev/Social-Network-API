@@ -26,8 +26,9 @@ export const getSingleUser = async (req: Request, res: Response) => {
         .populate('thoughts')
         .populate('friends');
 
-        if(){
-            
+        if(!user){
+            res.status(404).json({message: 'Something went wrong with user!'});
+
         }
 
     }
