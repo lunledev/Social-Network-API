@@ -20,5 +20,13 @@ export const getAllUsers = async (_req: Request, res: Response) =>{
 
 //get single user by its _id and populated thought and friend data
 export const getSingleUser = async (req: Request, res: Response) => {
+    try{
+
+    }
+    catch(err)
+    {
+        
+
+    }
     
 }
