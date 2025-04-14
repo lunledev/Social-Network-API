@@ -28,14 +28,15 @@ export const getSingleUser = async (req: Request, res: Response) => {
 
         if(!user){
             res.status(404).json({message: 'Something went wrong with user!'});
-
+        }
+        else{
+            res.json(user);
         }
 
     }
     catch(err)
     {
-        
-
+        res.status(500).json(err);
     }
     
 }
