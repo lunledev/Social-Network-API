@@ -39,4 +39,16 @@ export const getSingleUser = async (req: Request, res: Response) => {
         res.status(500).json(err);
     }
     
-}
+};
+
+//post(create a new user)
+export const createUser = async (req: Request, res: Response) =>{
+    try{
+        const newUser = await User.create(req.body);
+        res.json(newUser);
+    }
+    catch(err){
+        res.status(500).json(err);
+    }
+
+};
